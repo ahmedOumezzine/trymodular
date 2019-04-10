@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Modules\trymodular.Module.Main\trymodular.Module.Main.csproj" />
     <ProjectReference Include="..\trymodular.Core\trymodular.Core.csproj" />
-    <ProjectReference Include="..\trymodular.Module.Main\trymodular.Module.Main.csproj" />
   </ItemGroup>
 
   <ItemGroup>

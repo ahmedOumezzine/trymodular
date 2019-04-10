@@ -67,17 +67,16 @@ namespace trymodular.Web.Extensions {
                 })
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization();
+ 
 
             foreach (var module in modules) {
                 // Register controller from modules
                 mvcBuilder.AddApplicationPart(module.Assembly);
-
                 // Register dependency in modules
-                var moduleInitializerType =
-                    module.Assembly.GetTypes().FirstOrDefault(x => typeof(IModuleInitializer).IsAssignableFrom(x));
+                var moduleInitializerType =module.Assembly.GetTypes().FirstOrDefault(x => typeof(IModuleInitializer).IsAssignableFrom(x));
                 if ((moduleInitializerType != null) && (moduleInitializerType != typeof(IModuleInitializer))) {
                     var moduleInitializer = (IModuleInitializer)Activator.CreateInstance(moduleInitializerType);
-                    moduleInitializer.Init(services);
+                    moduleInitializer.ConfigureServices(services);
                 }
             }
 
