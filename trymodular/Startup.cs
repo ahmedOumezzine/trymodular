@@ -55,8 +55,8 @@ namespace trymodular.Web {
             GlobalConfiguration.WebRootPath = _hostingEnvironment.WebRootPath;
             GlobalConfiguration.ContentRootPath = _hostingEnvironment.ContentRootPath;
             services.LoadInstalledModules(Modules, _hostingEnvironment);
-            //services.AddCustomizedDataStore(Configuration);
-            //services.AddCustomizedIdentity();  
+            services.AddCustomizedDataStore(Configuration);
+            services.AddCustomizedIdentity();  
             services.Configure<RazorViewEngineOptions>(options => {
                 options.ViewLocationExpanders.Add(new ModuleViewLocationExpander());
             });

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using trymodular.Core;
 using trymodular.Module.Main.Models;
+using trymodular.Module.Main.Services;
 
 namespace trymodular.Module.Main
 {
@@ -16,6 +17,7 @@ namespace trymodular.Module.Main
         public void ConfigureServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<SignInManager<User>, SignInManager<User>>();
+            serviceCollection.AddScoped<UserManager<User>, UserManager<User>>();
         }
 
      
