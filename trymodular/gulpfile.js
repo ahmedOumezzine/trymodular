@@ -39,7 +39,19 @@ gulp.task('clean-module', function () {
     return gulp.src([paths.host.modules + '*', paths.host.wwwrootModules + '*'], { read: false })
         .pipe(clean());
 });
- 
+gulp.task('copy-static', function () {
+    modules.forEach(function (module) {
+        console.log('copying static contents ' + paths.dev.modules + module.id);
+        gulp.src([paths.dev.modules + module.id ,
+        paths.dev.modules + module.id + '/module.json'], { base: module.id })
+            .pipe(gulp.dest(paths.host.modules + module.id));
+        gulp.src(paths.dev.modules + module.id + '/wwwroot/**/*.*')
+            .pipe(gulp.dest(paths.host.wwwrootModules + module.id.split(".").pop().toLowerCase()));
+    });
+
+    gulp.src(paths.dev.modules + 'SimplCommerce.Module.SampleData/SampleContent/**/*.*')
+        .pipe(gulp.dest(paths.host.modules + 'SimplCommerce.Module.SampleData/SampleContent'));
+});
 gulp.task('copy-modules', ['clean-module'], function () {
     
 

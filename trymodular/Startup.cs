@@ -60,6 +60,8 @@ namespace trymodular.Web {
             services.Configure<RazorViewEngineOptions>(options => {
                 options.ViewLocationExpanders.Add(new ModuleViewLocationExpander());
             });
+            services.Configure<RazorViewEngineOptions>(
+                options => { options.ViewLocationExpanders.Add(new ThemeableViewLocationExpander()); });
             services.AddCustomizedMvc(Modules);
             return services.Build(Configuration, _hostingEnvironment);
         }

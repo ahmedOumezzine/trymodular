@@ -1,6 +1,6 @@
 {
   "id": "trymodular.Module.Main",
   "name": "Main",
-  "isBundledWithHost": false,
+  "isBundledWithHost": true,
   "version": "1.0.0"
 }
